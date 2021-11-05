@@ -71,9 +71,18 @@ func create(w http.ResponseWriter, r *http.Request) {
 		// 	Description:   r.FormValue("description"),
 		// } // Block
 		//
-		// if blockJson, err := json.Marshal(&block); err == nil {
+		// if b, exist := UserChains[bloc.UserId]; exist {
 		// 	w.Write(blockJson)
 		// } // if
+		if storedUserChain, exist := UserChains[bloc.UserId]; exist {
+			var lastBlock Block = storedUserChain.chain[len(storedUserChain.chain)-1]
+			blockJson, err := json.Marshal(&lastBlock)
+			if err != nil {
+				http.Error(w, "Marshal Failed", http.StatusBadRequest)
+			} else {
+				w.Write(blockJson)
+			} // if-else
+		} // if
 	default:
 		w.WriteHeader(http.StatusNotImplemented)
 	} // switch
