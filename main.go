@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
 // Map to store all users blockchains
@@ -80,10 +81,10 @@ func create(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// TODO: Run locally
-	port := "8000"
+	// port := "8000"
 
 	// TODO: For production
-	// port := os.Getenv("PORT")
+	port := os.Getenv("PORT")
 	http.HandleFunc("/", status)
 	http.HandleFunc("/create", create)
 	log.Print("Listening on port: " + port)
