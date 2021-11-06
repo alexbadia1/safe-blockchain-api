@@ -24,9 +24,13 @@ type Block struct {
 	DegreeName          string `json:"degree_name"`
 	DateRange           string `json:"date_range"`
 	Description         string `json:"description"`
+	Index               int64  `json:"index"`
+	Timestamp           int64  `json:"timestamp"`
+	PreviousHash        string `json:"previousHash"`
+	Hash                string `json:"hash"`
 } // Block
 
 type Blockchain struct {
-	userId int
-	chain  []Block
+	userId int     `json:"userId"`
+	chain  []Block `json:"chain"`
 } // Blockchain
