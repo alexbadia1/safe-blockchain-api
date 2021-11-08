@@ -7,6 +7,8 @@ import (
 )
 
 // Map to store all users blockchains
+//
+// TODO: Figure out where the heck to put this.
 var UserChains = make(map[string]Blockchain)
 
 // Returns the current status of the server
