@@ -1,28 +1,69 @@
 package main
 
 import (
-	"io"
 	"log"
 	"net/http"
+	"os"
 )
 
 // Map to store all users blockchains
 var UserChains = make(map[string]Blockchain)
 
 // Returns the current status of the server
-func status(w http.ResponseWriter, r *http.Request) {
-	log.Println("\"alive\":true")
-	w.Header().Set("Content-Type", "application/json")
-	io.WriteString(w, `{"alive": true}`)
-} // status
+func docIndex(w http.ResponseWriter, r *http.Request) {
+	// Make sure this endpoint is only accessible at "/".
+	if r.URL.Path != "/" && r.URL.Path != "/index.html" {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	} // if
+	http.ServeFile(w, r, "templates/index.html")
+} // docIndex
+
+// Returns the current status of the server
+func docCreate(w http.ResponseWriter, r *http.Request) {
+	// Make sure this endpoint is only accessible at "/".
+	if r.URL.Path != "/create.html" {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	} // if
+	http.ServeFile(w, r, "templates/create.html")
+} // docIndex
+
+// Returns the current status of the server
+func docChain(w http.ResponseWriter, r *http.Request) {
+	// Make sure this endpoint is only accessible at "/".
+	if r.URL.Path != "/chain.html" {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	} // if
+	http.ServeFile(w, r, "templates/chain.html")
+} // docIndex
+
+// Returns the current status of the server
+func docMine(w http.ResponseWriter, r *http.Request) {
+	// Make sure this endpoint is only accessible at "/".
+	if r.URL.Path != "/mine.html" {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	} // if
+	http.ServeFile(w, r, "templates/mine.html")
+} // docIndex
 
 func main() {
 	// TODO: Run locally
-	port := "8000"
+	// port := "8000"
 
 	// TODO: For production
-	// port := os.Getenv("PORT")
-	http.HandleFunc("/", status)
+	port := os.Getenv("PORT")
+
+	// Documentation Endpoints
+	http.HandleFunc("/", docIndex)
+	http.HandleFunc("/index.html", docIndex)
+	http.HandleFunc("/create.html", docCreate)
+	http.HandleFunc("/chain.html", docChain)
+	http.HandleFunc("/mine.html", docMine)
+
+	// API Endpoints
 	http.HandleFunc("/create", new_block)
 	http.HandleFunc("/chain", getChain)
 	log.Print("Listening on port: " + port)

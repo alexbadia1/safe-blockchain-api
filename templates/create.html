@@ -3,223 +3,78 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    <meta name="csrf-token" content="NWvnsmHtkgyGjWBzAGxF7DL28HcjpkGzNsRQThMX">
-    <title>Tokened.life</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-
-    <link rel="stylesheet" href="https://tokened.thesafebutton.com/css/app.css?_m=1630757528" media="all">
-    <!-- <script src="https://tokened.thesafebutton.com/js/app.js?_m=1630757528" defer></script> -->
-
-
+    <title>SAFE Blockchain API Documentation</title>
+    <meta name="description" content="Main information about API">
 </head>
 
-<body class="antialiased">
-    <div id="app">
-        <navbar logo-name="Tokened.life"
-            :menu-items="[{&quot;id&quot;:&quot;1&quot;,&quot;link&quot;:&quot;\/contacts&quot;,&quot;title&quot;:&quot;Contacts&quot;},{&quot;id&quot;:&quot;2&quot;,&quot;link&quot;:&quot;#&quot;,&quot;title&quot;:&quot;Search&quot;}]">
-        </navbar>
-        <div class="relative max-w-6xl mx-auto px-2 sm:px-6 lg:px-8 py-10">
+<body>
+    <div class="headline">
+        <div>
+            <div class="description">
+                <h1>SAFE Blockchain API Documentation</h1>
+                <p>This is an overview of the SAFE Blockchain API. Below are the listed endpoints detailing request and
+                    response handling.
+                    (Nowwww I understand, why people don't waste time styling API documentation...)</p>
 
-            <div class="font-semibold text-2xl text-gray-700">Add new education for Miss Edyth Welch Sr.</div>
-
-            <div class="rounded-xl shadow-md p-4 my-4">
-                <form method="POST" action="/create">
-                    <input type="hidden" value="1" name="contact_id" />
-                    <input type="hidden" name="_token" value="NWvnsmHtkgyGjWBzAGxF7DL28HcjpkGzNsRQThMX">
-                    <div class="grid grid-cols-1 gap-6">
-
-
-                        <legend class="text-base font-medium text-gray-900">Certification</legend>
-                        <label class="block">
-                            <span class="text-gray-700">Enter Certificate URL or Token</span>
-                            <input type="text" name="certificate" value=""
-                                class=" mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-                                placeholder="Certificate">
-                        </label>
-                        <div>
-
-                            <label class="block text-gray-700">Enter Certificate URL or Token:</label>
-                            <div
-                                class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md ">
-                                <div class="space-y-1 text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
-                                        viewBox="0 0 48 48" aria-hidden="true">
-                                        <path
-                                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                    <div class="flex text-sm text-gray-600">
-                                        <label for="upload"
-                                            class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                            <span>Upload a file</span>
-                                            <input id="upload" name="upload" type="file" class="sr-only">
-                                        </label>
-                                        <p class="pl-1">PNG, JPG up to 10MB</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-4 gap-6 mb-6">
-                            <fieldset>
-                                <div>
-                                    <legend class="text-base font-medium text-gray-900">Certificate category</legend>
-                                </div>
-                                <div class="mt-4 space-y-4">
-                                    <div class="flex items-center">
-                                        <input id="c_cat1" name="c_cat" type="radio" value="Education"
-                                            class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                        <label for="c_cat1"
-                                            class="ml-3 block text-sm font-medium text-gray-700">Education</label>
-                                    </div>
-                                </div>
-                                <div class="mt-4 space-y-4">
-                                    <div class="flex items-center">
-                                        <input id="c_cat2" name="c_cat" type="radio" value="Employment"
-                                            class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                        <label for="c_cat2"
-                                            class="ml-3 block text-sm font-medium text-gray-700">Employment</label>
-                                    </div>
-                                </div>
-                                <div class="mt-4 space-y-4">
-                                    <div class="flex items-center">
-                                        <input id="c_cat3" name="c_cat" type="radio" value="Trade Certification"
-                                            class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                        <label for="c_cat3" class="ml-3 block text-sm font-medium text-gray-700">Trade
-                                            Certification</label>
-                                    </div>
-                                </div>
-                                <div class="mt-4 space-y-4">
-                                    <div class="flex items-center">
-                                        <input id="c_cat4" name="c_cat" type="radio" value="Other"
-                                            class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
-                                        <label for="c_cat4"
-                                            class="ml-3 block text-sm font-medium text-gray-700">Other</label>
-                                    </div>
-                                </div>
-                            </fieldset>
-
-
-                            <fieldset>
-                                <div>
-                                    <legend class="text-base font-medium text-gray-900">Certificate attributes</legend>
-                                </div>
-                                <div class="mt-4 space-y-4">
-                                    <div class="flex items-center">
-                                        <span class="mr-3 w-32 block text-sm font-medium text-gray-700">Display
-                                            attribute 1</span>
-                                        <label for="c_share1" class="flex items-center cursor-pointer">
-                                            <div class="relative">
-                                                <input type="checkbox" name="c_share[]" id="c_share1" value="1"
-                                                    class="sr-only">
-                                                <div class="block bg-gray-600 w-8 h-5 rounded-full"></div>
-                                                <div
-                                                    class="dot absolute left-1 top-1 bg-white w-3 h-3 rounded-full transition">
-                                                </div>
-                                            </div>
-                                            <div class="ml-3 text-gray-700 font-medium">Share</div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="mt-4 space-y-4">
-                                    <div class="flex items-center">
-                                        <span class="mr-3 w-32 block text-sm font-medium text-gray-700">Display
-                                            attribute 2</span>
-                                        <label for="c_share2" class="flex items-center cursor-pointer">
-                                            <div class="relative">
-                                                <input type="checkbox" name="c_share[]" id="c_share2" value="2"
-                                                    class="sr-only">
-                                                <div class="block bg-gray-600 w-8 h-5 rounded-full"></div>
-                                                <div
-                                                    class="dot absolute left-1 top-1 bg-white w-3 h-3 rounded-full transition">
-                                                </div>
-                                            </div>
-                                            <div class="ml-3 text-gray-700 font-medium">Share</div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="mt-4 space-y-4">
-                                    <div class="flex items-center">
-                                        <span class="mr-3 w-32 block text-sm font-medium text-gray-700">Display
-                                            attribute 3</span>
-                                        <label for="c_share3" class="flex items-center cursor-pointer">
-                                            <div class="relative">
-                                                <input type="checkbox" name="c_share[]" id="c_share3" value="3"
-                                                    class="sr-only">
-                                                <div class="block bg-gray-600 w-8 h-5 rounded-full"></div>
-                                                <div
-                                                    class="dot absolute left-1 top-1 bg-white w-3 h-3 rounded-full transition">
-                                                </div>
-                                            </div>
-                                            <div class="ml-3 text-gray-700 font-medium">Share</div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="mt-4 space-y-4">
-                                    <div class="flex items-center">
-                                        <span class="mr-3 w-32 block text-sm font-medium text-gray-700">Display
-                                            attribute 4</span>
-                                        <label for="c_share4" class="flex items-center cursor-pointer">
-                                            <div class="relative">
-                                                <input type="checkbox" name="c_share[]" id="c_share4" value="4"
-                                                    class="sr-only">
-                                                <div class="block bg-gray-600 w-8 h-5 rounded-full"></div>
-                                                <div
-                                                    class="dot absolute left-1 top-1 bg-white w-3 h-3 rounded-full transition">
-                                                </div>
-                                            </div>
-                                            <div class="ml-3 text-gray-700 font-medium">Share</div>
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                            </fieldset>
-                        </div>
-
-
-                        <label class="block">
-                            <span class="text-gray-700">Institution name *</span>
-                            <input type="text" name="institution_name" value=""
-                                class=" mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-                                placeholder="Institution name" required>
-                        </label>
-
-
-                        <label class="block">
-                            <span class="text-gray-700">Degree name *</span>
-                            <input type="text" name="degree_name" value=""
-                                class=" mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-                                placeholder="Degree name" required>
-                        </label>
-
-
-                        <label class="block">
-                            <span class="text-gray-700">Dates</span>
-                            <input type="text" name="dates" value=""
-                                class=" mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-                                placeholder="Date range">
-                        </label>
-
-                        <label class="block">
-                            <span class="text-gray-700">Description</span>
-                            <textarea name="description"
-                                class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-                                rows="3"></textarea>
-                        </label>
-
-                        <button type="submit" class="btn btn-primary md:m-auto md:w-1/2" value="submit"> Add </button>
-                    </div>
-                </form>
+                <a class="closeheader" title="Hide header" href="index.html">&nbsp;home</a>
             </div>
+
+            <h2>Endpoints</h2>
+            <ul>
+                <li>
+                    <a class="closeheader" title="Hide header" href="create.html">&nbsp;/create</a>
+                </li>
+                <li>
+                    <a class="closeheader" title="Hide header" href="chain.html">&nbsp;/chain</a>
+                </li>
+                <li>
+                    <a class="closeheader" title="Hide header" href="mine.html">&nbsp;/mine</a>
+                </li>
+            </ul>
+
+            <h2>Create Endpoint</h2>
+            <p>
+                This endpoint is used to add a block to the user's blockchain.
+            </p>
+
+            <h3>Post Request</h3>
+            <p>To add a new block to the user's blockchain, this endpoint is expecting a post request with a JSON body.
+            </p>
+
+            <h4>JSON Format</h4>
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"userId" : &lt;string&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token" : &lt;string&gt;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url" : &lt;string&gt;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category" : &lt;string&gt;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"institution_name" : &lt;string&gt;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"degree_name" : &lt;string&gt;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"date_range" : &lt;string&gt;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"description" : &lt;string&gt;<br>
+            }<br>
+
+            <h4>Example</h4>
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"userId" : "1",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token" : "ddd77eb1-27a1-493d-85de-bf494fb4267a",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url" :
+            "https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category" : "Education",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"institution_name" : "Coursera",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"degree_name" : "Google Data Analytics Professional Certificate",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"date_range" : "October 2021",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"description" : "Learned BigQueary, R, Tableau, Data Narratives/Presentation, Data
+            Life Cycle, etc."<br>
+            }<br>
         </div>
     </div>
 </body>
+
+<footer>
+    <br>
+    <span>&copy; SAFE 2021</span>
+</footer>
 
 </html>

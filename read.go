@@ -18,7 +18,7 @@ func getChain(w http.ResponseWriter, r *http.Request) {
 
 	// Search for blo
 	if userChain, exist := UserChains[tmpBloc.UserId]; exist {
-		if blockJson, err := json.Marshal(&userChain.chain); err == nil {
+		if blockJson, err := json.Marshal(&userChain.Chain); err == nil {
 			w.Write(blockJson)
 		} else {
 			http.Error(w, "Marshal Failed", http.StatusNoContent)

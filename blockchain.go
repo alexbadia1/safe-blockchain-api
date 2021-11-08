@@ -31,6 +31,6 @@ type Block struct {
 } // Block
 
 type Blockchain struct {
-	userId int     `json:"userId"`
-	chain  []Block `json:"chain"`
+	UserId int     `json:"userId"`
+	Chain  []Block `json:"chain"`
 } // Blockchain

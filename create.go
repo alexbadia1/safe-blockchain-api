@@ -17,9 +17,9 @@ func new_block(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
 	} // if
+	if r.Method == "GET" {
 
-	// Handle Post Request with JSON Body.
-	if r.Method == "POST" {
+	} else if r.Method == "POST" {
 		// Parse JSON to Block Struct
 		var bloc Block = Block{}
 		var success bool = parseJson(&bloc, r)
@@ -36,10 +36,10 @@ func new_block(w http.ResponseWriter, r *http.Request) {
 
 		// Append a new block to user's blockchain
 		if storedUserChain, exist := UserChains[bloc.UserId]; exist {
-			calcBlockMetadata(&bloc, storedUserChain.chain)
-			storedUserChain.chain = append(storedUserChain.chain, bloc)
+			calcBlockMetadata(&bloc, storedUserChain.Chain)
+			storedUserChain.Chain = append(storedUserChain.Chain, bloc)
 			UserChains[bloc.UserId] = storedUserChain
-			if blockJson, err := json.Marshal(&UserChains[bloc.UserId].chain[bloc.Index]); err == nil {
+			if blockJson, err := json.Marshal(&UserChains[bloc.UserId].Chain[bloc.Index]); err == nil {
 				w.Write(blockJson)
 			} else {
 				http.Error(w, "Marshal Failed", http.StatusNoContent)
