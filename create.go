@@ -8,21 +8,22 @@ import (
 	"time"
 )
 
-// Create endpoint
-//
-// Creates a new block and adds it to the block
+//================================================================================
+// Create Endpoint [/create]
+//================================================================================
+
+// Creates a new block and adds it to the user's blockchain
 func new_block(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/create".
 	if r.URL.Path != "/create" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
 	} // if
-	if r.Method == "GET" {
 
-	} else if r.Method == "POST" {
+	if r.Method == "POST" {
 		// Parse JSON to Block Struct
 		var bloc Block = Block{}
-		var success bool = parseJson(&bloc, r)
+		var success bool = parseJsonToBlock(&bloc, r)
 		if !success {
 			http.Error(w, "Bad request", http.StatusBadRequest)
 			return

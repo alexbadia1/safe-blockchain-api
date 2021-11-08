@@ -5,6 +5,11 @@ import (
 	"net/http"
 )
 
+//================================================================================
+// Chain Endpoint [/chain]
+//================================================================================
+
+// Sends JSON representation of the user's blockchain
 func getChain(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/chain".
 	if r.URL.Path != "/chain" {
@@ -14,12 +19,12 @@ func getChain(w http.ResponseWriter, r *http.Request) {
 
 	// Get input
 	var tmpBloc Block = Block{}
-	parseJson(&tmpBloc, r)
+	parseJsonToBlock(&tmpBloc, r)
 
-	// Search for blo
+	// Search for user's blockchain
 	if userChain, exist := UserChains[tmpBloc.UserId]; exist {
-		if blockJson, err := json.Marshal(&userChain.Chain); err == nil {
-			w.Write(blockJson)
+		if chainJson, err := json.Marshal(&userChain.Chain); err == nil {
+			w.Write(chainJson)
 		} else {
 			http.Error(w, "Marshal Failed", http.StatusNoContent)
 		} // if-else

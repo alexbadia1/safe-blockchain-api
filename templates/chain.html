@@ -18,7 +18,7 @@
                     response handling.
                     (Nowwww I understand, why people don't waste time styling API documentation...)</p>
 
-                    <a class="closeheader" title="Hide header" href="index.html">&nbsp;home</a>
+                <a class="closeheader" title="Hide header" href="index.html">&nbsp;home</a>
             </div>
 
             <h2>Endpoints</h2>
@@ -35,7 +35,57 @@
             </ul>
 
             <h2>Chain Endpoint</h2>
-            <p>Not yet implemented</p>
+            <p>This endpoint is used to retrieve a user's entire blockchain.</p>
+
+            <h3>GET Request</h3>
+            <p>To retrieve a user's blockchain, this endpoint is expecting a GET request with a JSON body.
+            </p>
+
+            <h4>JSON Format</h4>
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"userId" : &lt;string&gt;<br>
+            }<br>
+
+            <h3>Example</h3>
+
+            <h4>GET Request</h4>
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"userId" : "1",<br>
+            }<br>
+
+            <h4>GET Response</h4>
+            [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userId":"1",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_token":"ddd77eb1-27a1-493d-85de-bf494fb4267a",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_url":"https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_category":"Education",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"institution_name":"Coursera",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"degree_name":"Google Data Analytics Professional
+            Certificate",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date_range":"October 2021",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description":"Learned BigQueary, R, Tableau, Data
+            Narratives/Presentation, Data Life Cycle, etc.",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"index":0,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"timestamp":1636390814,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"previousHash":"fb0e9f6297e055c4c0812ea0da09c9d48cbf6144a6dc8b66bf930c44b615bea8",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hash":"fb0e9f6297e055c4c0812ea0da09c9d48cbf6144a6dc8b66bf930c44b615bea8"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userId":"1",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_token":"",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_url":"",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_category":"Education",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"institution_name":"Marist",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"degree_name":"Cybersecurity",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date_range":"December 2021",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description":"Learned absolutely nothing",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"index":1,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"timestamp":1636390814,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"previousHash":"fb0e9f6297e055c4c0812ea0da09c9d48cbf6144a6dc8b66bf930c44b615bea8",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hash":"a57ef153daad6205e14d766cbafdfb2a4e16117aef8c1f5409649a6b9fd77839"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+            ] <br>
         </div>
     </div>
 </body>

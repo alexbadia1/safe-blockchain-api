@@ -6,12 +6,18 @@ import (
 	"os"
 )
 
-// Map to store all users blockchains
+//================================================================================
+// All User Blockchains stored in a Map.
 //
 // TODO: Figure out where the heck to put this.
+//================================================================================
+
 var UserChains = make(map[string]Blockchain)
 
-// Returns the current status of the server
+//================================================================================
+// Documentation Routes
+//================================================================================
+
 func docIndex(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/".
 	if r.URL.Path != "/" && r.URL.Path != "/index.html" {
@@ -21,7 +27,6 @@ func docIndex(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "templates/index.html")
 } // docIndex
 
-// Returns the current status of the server
 func docCreate(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/".
 	if r.URL.Path != "/create.html" {
@@ -29,9 +34,8 @@ func docCreate(w http.ResponseWriter, r *http.Request) {
 		return
 	} // if
 	http.ServeFile(w, r, "templates/create.html")
-} // docIndex
+} // docCreate
 
-// Returns the current status of the server
 func docChain(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/".
 	if r.URL.Path != "/chain.html" {
@@ -39,9 +43,8 @@ func docChain(w http.ResponseWriter, r *http.Request) {
 		return
 	} // if
 	http.ServeFile(w, r, "templates/chain.html")
-} // docIndex
+} // docChain
 
-// Returns the current status of the server
 func docMine(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/".
 	if r.URL.Path != "/mine.html" {
@@ -49,7 +52,11 @@ func docMine(w http.ResponseWriter, r *http.Request) {
 		return
 	} // if
 	http.ServeFile(w, r, "templates/mine.html")
-} // docIndex
+} // docMine
+
+//================================================================================
+// Server Entry Point
+//================================================================================
 
 func main() {
 	// TODO: Run locally
