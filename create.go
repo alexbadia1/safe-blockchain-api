@@ -15,6 +15,7 @@ import (
 // Creates a new block and adds it to the user's blockchain
 func new_block(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/create".
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	if r.URL.Path != "/create" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
@@ -42,9 +43,6 @@ func new_block(w http.ResponseWriter, r *http.Request) {
 			UserChains[bloc.UserId] = storedUserChain
 			if blockJson, err := json.Marshal(&UserChains[bloc.UserId].Chain[bloc.Index]); err == nil {
 				//Allow CORS here By * or specific origin
-				w.Header().Set("Content-Type", "text/html; charset=ascii")
-				w.Header().Set("Access-Control-Allow-Origin", "*")
-				w.Header().Set("Access-Control-Allow-Headers", "Content-Type,access-control-allow-origin, access-control-allow-headers")
 				w.Write(blockJson)
 			} else {
 				http.Error(w, "Marshal Failed", http.StatusNoContent)

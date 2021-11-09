@@ -12,6 +12,7 @@ import (
 // Sends JSON representation of the user's blockchain
 func getChain(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/chain".
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	if r.URL.Path != "/chain" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
