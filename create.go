@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 )
@@ -16,6 +17,7 @@ import (
 func new_block(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/create".
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	log.Println(r.URL.Path)
 	if r.URL.Path != "/create" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
