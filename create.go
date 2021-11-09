@@ -45,9 +45,6 @@ func new_block(w http.ResponseWriter, r *http.Request) {
 			storedUserChain.Chain = append(storedUserChain.Chain, bloc)
 			UserChains[bloc.UserId] = storedUserChain
 			if blockJson, err := json.Marshal(&UserChains[bloc.UserId].Chain[bloc.Index]); err == nil {
-				//Allow CORS here By * or specific origin
-				w.WriteHeader(http.StatusCreated)
-				w.Header().Set("Content-Type", "application/json")
 				w.Write(blockJson)
 			} else {
 				http.Error(w, "Marshal Failed", http.StatusNoContent)
