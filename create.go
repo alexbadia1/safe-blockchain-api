@@ -26,7 +26,7 @@ func new_block(w http.ResponseWriter, r *http.Request) {
 		var bloc Block = Block{}
 		var success bool = parseJsonToBlock(&bloc, r)
 		if !success {
-			http.Error(w, "Bad request", http.StatusBadRequest)
+			http.Error(w, "JSON Parse Failed", http.StatusBadRequest)
 			return
 		} // if
 
