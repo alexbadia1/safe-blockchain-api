@@ -41,20 +41,15 @@
             <p>This endpoint is used to retrieve a user's entire blockchain.</p>
 
             <h3>GET Request</h3>
-            <p>To retrieve a user's blockchain, this endpoint is expecting a GET request with a JSON body.
+            <p>To retrieve a user's blockchain, this endpoint is expecting a GET request with a userId query parameter.
             </p>
 
-            <h4>JSON Format</h4>
-            {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;"userId" : &lt;string&gt;<br>
-            }<br>
+            <h3>Format</h3>
+            https://safe-demo-api.herokuapp.com/chain?userId=[int]
 
-            <h3>Example</h3>
+            <h4>Example</h4>
 
-            <h4>GET Request</h4>
-            {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;"userId" : "1",<br>
-            }<br>
+            <a href="/chain?userId=1">https://safe-demo-api.herokuapp.com/chain?userId=1</a>
 
             <h4>GET Response</h4>
             [<br>

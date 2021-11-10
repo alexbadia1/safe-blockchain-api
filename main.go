@@ -63,6 +63,7 @@ func docImage(w http.ResponseWriter, r *http.Request) {
 
 	http.ServeFile(w, r, "templates/image.html")
 } // docImage
+
 //================================================================================
 // Server Entry Point
 //================================================================================

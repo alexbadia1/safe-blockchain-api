@@ -2,6 +2,10 @@ package main
 
 import "net/http"
 
+//================================================================================
+// Images Endpoint [/images]
+//================================================================================
+
 // Serves image
 func getImage(w http.ResponseWriter, r *http.Request) {
 	// This is bad, I know, it's for demo purposes only...
