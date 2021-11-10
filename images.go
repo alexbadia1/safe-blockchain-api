@@ -9,9 +9,8 @@ func getImage(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "image/png")
 
 	if name := r.URL.Query().Get("name"); name == "bobby" {
-		http.ServeFile(w, r, "images/bobby-headshot.png")
+		http.ServeFile(w, r, "./images/bobby-headshot.png")
 	} else {
-		http.ServeFile(w, r, "images/bobby-headshot.png")
 		http.Error(w, "Image doesn't exist of exists!", http.StatusNoContent)
 	} // else
 } // getImage
