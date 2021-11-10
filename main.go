@@ -87,7 +87,7 @@ func main() {
 	http.HandleFunc("/chain", getChain)
 
 	// Images
-	http.HandleFunc("/images/bobby", bobbyImage)
+	http.HandleFunc("/images", getImage)
 	log.Print("Listening on port: " + port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 } // main
