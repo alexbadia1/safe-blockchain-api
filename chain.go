@@ -20,18 +20,22 @@ func getChain(w http.ResponseWriter, r *http.Request) {
 		return
 	} // if
 
+	if userId := r.URL.Query().Get("userId"); userId != "" {
+		// Search for user's blockchain
+		if userChain, exist := UserChains[userId]; exist {
+			if chainJson, err := json.Marshal(&userChain.Chain); err == nil {
+				w.Write(chainJson)
+			} else {
+				http.Error(w, "Userfound, but Marshal Failed", http.StatusNoContent)
+			} // if-else
+		} else {
+			http.Error(w, "Blockchain for the specified user ID doesn't exist", http.StatusNoContent)
+		} // if-else
+	} else {
+		http.Error(w, "No user id was given!", http.StatusNoContent)
+	} // else
+
 	// Get input
 	var tmpBloc Block = Block{}
 	parseJsonToBlock(&tmpBloc, r)
-
-	// Search for user's blockchain
-	if userChain, exist := UserChains[tmpBloc.UserId]; exist {
-		if chainJson, err := json.Marshal(&userChain.Chain); err == nil {
-			w.Write(chainJson)
-		} else {
-			http.Error(w, "Marshal Failed", http.StatusNoContent)
-		} // if-else
-	} else {
-		http.Error(w, "Blockchain not found", http.StatusNoContent)
-	} // if-else
 } // chain
