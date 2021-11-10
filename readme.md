@@ -18,5 +18,12 @@ The API is currently being hosted with Heroku. Why not something like AWS lambda
 
 
 ## Notice
-All blockchains are currently stored on in this script, meaning every change to the API will erase all blockchains...
-Yah, we need to figure out where to actually put that stuff.
+  * All blockchains are currently stored on in a map in this script, meaning 
+      * Every change to the API will erase all blockchains... 
+      * Any spinning up or tearing down of containers that heroku does also resets the map of blockchains...
+
+  Yah, we need to figure out where to actually put the Blockchain.
+
+  * w.Header().Set("Access-Control-Allow-Origin", "*") is used frequently...
+
+
