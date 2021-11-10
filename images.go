@@ -11,6 +11,7 @@ func getImage(w http.ResponseWriter, r *http.Request) {
 	if name := r.URL.Query().Get("name"); name == "bobby" {
 		http.ServeFile(w, r, "images/bobby-headshot.png")
 	} else {
+		http.ServeFile(w, r, "images/bobby-headshot.png")
 		http.Error(w, "Image doesn't exist of exists!", http.StatusNoContent)
 	} // else
 } // getImage
