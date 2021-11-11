@@ -15,8 +15,6 @@ import (
 
 // Creates a new block and adds it to the user's blockchain
 func new_block(w http.ResponseWriter, r *http.Request) {
-	// This is bad, I know, it's for demo purposes only...
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	// Make sure this endpoint is only accessible at "/create".
 	if r.URL.Path != "/create" {

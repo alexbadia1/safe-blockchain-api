@@ -11,9 +11,6 @@ import (
 //================================================================================
 
 func delete_block(w http.ResponseWriter, r *http.Request) {
-	// This is bad, I know, it's for demo purposes only...
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
 	// Make sure this endpoint is only accessible at "/create".
 	if r.URL.Path != "/delete" {
 		log.Println(r.URL.Path)
