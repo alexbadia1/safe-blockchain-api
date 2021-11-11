@@ -5,6 +5,8 @@ go 1.17
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
+	github.com/gorilla/mux v1.8.0
+	github.com/rs/cors v1.8.0
 	github.com/sergi/go-diff v1.1.0 // indirect
 	golang.org/x/mod v0.4.2 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect

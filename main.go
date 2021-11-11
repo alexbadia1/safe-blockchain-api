@@ -4,6 +4,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 //================================================================================
@@ -76,20 +79,27 @@ func main() {
 	port := os.Getenv("PORT")
 
 	// Documentation Endpoints
-	http.HandleFunc("/", docIndex)
-	http.HandleFunc("/index.html", docIndex)
-	http.HandleFunc("/create.html", docCreate)
-	http.HandleFunc("/chain.html", docChain)
-	http.HandleFunc("/mine.html", docMine)
-	http.HandleFunc("/image.html", docImage)
+	router := mux.NewRouter()
+	router.HandleFunc("/", docIndex)
+	router.HandleFunc("/index.html", docIndex)
+	router.HandleFunc("/create.html", docCreate)
+	router.HandleFunc("/chain.html", docChain)
+	router.HandleFunc("/mine.html", docMine)
+	router.HandleFunc("/image.html", docImage)
 
 	// API Endpoints
-	http.HandleFunc("/create", new_block)
-	http.HandleFunc("/chain", getChain)
-	http.HandleFunc("/delete", delete_block)
+	router.HandleFunc("/create", new_block)
+	router.HandleFunc("/chain", getChain)
+	router.HandleFunc("/delete", delete_block)
 
 	// Images
-	http.HandleFunc("/images", getImage)
+	router.HandleFunc("/images", getImage)
+
+	// Wrapping CORS handler
+	handler := cors.New(cors.Options{
+		AllowedMethods: []string{"GET", "POST", "DELETE", "PATCH", "OPTIONS"},
+	}).Handler(router)
+
 	log.Print("Listening on port: " + port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	log.Fatal(http.ListenAndServe(":"+port, handler))
 } // main
