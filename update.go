@@ -48,8 +48,8 @@ func update_block(w http.ResponseWriter, r *http.Request) {
 			} // if
 
 			// Block to update exists
-			if blockToUpdate.Hash == currBlock.Hash {
-				createOriginHash = blockToUpdate.Hash
+			if blockToUpdate.CreateOriginHash == currBlock.CreateOriginHash {
+				createOriginHash = blockToUpdate.CreateOriginHash
 			} // if
 		} // for
 

@@ -38,8 +38,8 @@ func delete_block(w http.ResponseWriter, r *http.Request) {
 			var currBlock Block = UserChains[blockToDelete.UserId].Chain[i]
 
 			// Block to delete exists
-			if blockToDelete.Hash == currBlock.CreateOriginHash {
-				createOriginHash = blockToDelete.Hash
+			if blockToDelete.CreateOriginHash == currBlock.CreateOriginHash {
+				createOriginHash = blockToDelete.CreateOriginHash
 			} // if
 		} // for
 
