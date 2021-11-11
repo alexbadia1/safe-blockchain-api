@@ -12,7 +12,7 @@ The API is currently being hosted with Heroku. Why not something like AWS lambda
 ## Setup
   1. Clone this repository
   2. cd into the root folder of this directory.
-  3. __In main.go__ make sure the `port := "8000"` is being usedand  __comment out__ the "//for production" `port := os.Getenv("PORT")`.
+  3. __In main.go__ make sure the `port := "8000"` is being used and  __comment out__ the "// TODO: For production" `port := os.Getenv("PORT")`.
   4. In the terminal, run `go run .`
   5. Open your browser and go to `localhost:8000`
 
