@@ -29,17 +29,26 @@ func update_block(w http.ResponseWriter, r *http.Request) {
 			return
 		} // if
 
-		// Can't update a block from an empty chain
+		// Prevent user from trying to update the block's userId
+		// by checking the map of blockchains for the userId first.
 		if _, exist := UserChains[blockToUpdate.UserId]; !exist {
-			http.Error(w, "Blockchain is empty", http.StatusNoContent)
+			http.Error(w, "Blockchain for user doesn't exist", http.StatusNoContent)
+			return
 		} // if
 
 		// Find block in chain
 		var createOriginHash string = ""
-		for _, block := range UserChains[blockToUpdate.UserId].Chain {
+		for i := len(UserChains[blockToUpdate.UserId].Chain) - 1; i >= 0; i-- {
+			var currBlock Block = UserChains[blockToUpdate.UserId].Chain[i]
 
-			// Block to delete exists
-			if blockToUpdate.Hash == block.Hash {
+			// Can't update a deleted block
+			if currBlock.BlockType == Delete && currBlock.CreateOriginHash == blockToUpdate.CreateOriginHash {
+				http.Error(w, "Can't update a block that was already deleted", http.StatusNoContent)
+				return
+			} // if
+
+			// Block to update exists
+			if blockToUpdate.Hash == currBlock.Hash {
 				createOriginHash = blockToUpdate.Hash
 			} // if
 		} // for

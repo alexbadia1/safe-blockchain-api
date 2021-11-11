@@ -34,10 +34,11 @@ func delete_block(w http.ResponseWriter, r *http.Request) {
 
 		// Find block in chain
 		var createOriginHash string = ""
-		for _, block := range UserChains[blockToDelete.UserId].Chain {
+		for i := len(UserChains[blockToDelete.UserId].Chain) - 1; i >= 0; i-- {
+			var currBlock Block = UserChains[blockToDelete.UserId].Chain[i]
 
 			// Block to delete exists
-			if blockToDelete.Hash == block.Hash {
+			if blockToDelete.Hash == currBlock.CreateOriginHash {
 				createOriginHash = blockToDelete.Hash
 			} // if
 		} // for
