@@ -24,6 +24,4 @@ The API is currently being hosted with Heroku. Why not something like AWS lambda
 
   Yah, we need to figure out where to actually put the Blockchain.
 
-  * w.Header().Set("Access-Control-Allow-Origin", "*") is used frequently...
-
 
