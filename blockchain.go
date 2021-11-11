@@ -35,8 +35,8 @@ type Block struct {
 	Timestamp           int64  `json:"timestamp"`
 	PreviousHash        string `json:"previousHash"`
 	Hash                string `json:"hash"`
-	blockType           string `json:"blockType`
-	createOriginHash    string `json:"createOriginHash`
+	BlockType           string `json:"blockType"`
+	CreateOriginHash    string `json:"createOriginHash"`
 } // Block
 
 type Blockchain struct {

@@ -47,15 +47,15 @@ func getChain(w http.ResponseWriter, r *http.Request) {
 
 				// Found a block that either updated, or deleted
 				// the original block or is the original block itself.
-				if createBlock.createOriginHash == userChain.Chain[i].createOriginHash {
+				if createBlock.CreateOriginHash == userChain.Chain[i].CreateOriginHash {
 
 					// Ignore genesis or deleted blocks
-					if currBlock.blockType == Genesis || currBlock.blockType == Delete {
+					if currBlock.BlockType == Genesis || currBlock.BlockType == Delete {
 						continue createBlockLoop
 					} // if
 
 					// Add most recent version of the block
-					if currBlock.blockType == Update || currBlock.blockType == Create {
+					if currBlock.BlockType == Update || currBlock.BlockType == Create {
 						filteredBlocks = append(filteredBlocks, currBlock)
 						continue createBlockLoop
 					} // if
@@ -101,7 +101,7 @@ func getViewFromUrlQueryParams(w http.ResponseWriter, r *http.Request) string {
 func getCreateBlocks(userChain []Block) []Block {
 	createBlocks := make([]Block, 0)
 	for _, block := range userChain {
-		if block.blockType == Create {
+		if block.BlockType == Create {
 			createBlocks = append(createBlocks, block)
 		} // if
 	} // for
