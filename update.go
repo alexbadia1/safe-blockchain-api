@@ -53,8 +53,6 @@ func update_block(w http.ResponseWriter, r *http.Request) {
 			} // if
 		} // for
 
-		log.Printf("%v", createOriginHash)
-
 		if createOriginHash == "" {
 			http.Error(w, "Block does not exist in user's blockchain", http.StatusNoContent)
 		} // if
@@ -71,7 +69,6 @@ func update_block(w http.ResponseWriter, r *http.Request) {
 			storedUserChain.Chain = append(storedUserChain.Chain, blockToUpdate)
 			UserChains[blockToUpdate.UserId] = storedUserChain
 			if blockJson, err := json.Marshal(&UserChains[blockToUpdate.UserId].Chain[blockToUpdate.Index]); err == nil {
-				log.Printf("%v", blockJson)
 				w.Write(blockJson)
 			} else {
 				http.Error(w, "Marshal Failed", http.StatusNoContent)
