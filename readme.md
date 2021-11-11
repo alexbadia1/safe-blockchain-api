@@ -4,6 +4,11 @@ API root: https://safe-demo-api.herokuapp.com/
 
 The API is currently being hosted with Heroku. Why not something like AWS lambda? Well... because Heroku didn't ask for a credit card number (no strings attached API hosting I guess).
 
+In hindsight, I could've had 3 endpoints:
+  1. /chain, where I put all CRUD functionality based on the request type
+  2. /mine, to mine the block
+  3. /resources, where I store images, etc.
+
 ## Installation
   1. Install [go](https://golang.org/doc/install).
   2. Install [vs code](https://code.visualstudio.com/download) and add the Go extension.

@@ -43,13 +43,13 @@
                 </li>
             </ul>
 
-            <h2>/create Endpoint</h2>
+            <h2>/update Endpoint</h2>
             <p>
-                This endpoint is used to add a block to the user's blockchain.
+                This endpoint is used to delete an education/employment/certification from a user's blockchain.
             </p>
 
-            <h3>POST Request</h3>
-            <p>To add a new block to the user's blockchain, this endpoint is expecting a POST request with a JSON body.
+            <h3>PUT Request</h3>
+            <p>To update, this endpoint is expecting a PUT request with a JSON body.
             </p>
 
             <h4>JSON Format</h4>
@@ -66,7 +66,7 @@
 
             <h3>Example</h3>
 
-            <h4>POST Request</h4>
+            <h4>PUT Request</h4>
             {<br>
             &nbsp;&nbsp;&nbsp;&nbsp;"userId" : "1",<br>
             &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token" : "ddd77eb1-27a1-493d-85de-bf494fb4267a",<br>
@@ -80,7 +80,7 @@
             Life Cycle, etc."<br>
             }<br>
 
-            <h4>POST Response</h4>
+            <h4>PUT Response</h4>
 
             {<br>
             &nbsp;&nbsp;&nbsp;&nbsp;"userId":"1",<br>

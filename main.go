@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
@@ -22,7 +21,7 @@ var UserChains = make(map[string]Blockchain)
 //================================================================================
 
 func docIndex(w http.ResponseWriter, r *http.Request) {
-	// Make sure this endpoint is only accessible at "/".
+	// Make sure this endpoint is only accessible at "/index.html".
 	if r.URL.Path != "/" && r.URL.Path != "/index.html" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
@@ -31,7 +30,7 @@ func docIndex(w http.ResponseWriter, r *http.Request) {
 } // docIndex
 
 func docCreate(w http.ResponseWriter, r *http.Request) {
-	// Make sure this endpoint is only accessible at "/".
+	// Make sure this endpoint is only accessible at "/create.html".
 	if r.URL.Path != "/create.html" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
@@ -40,7 +39,7 @@ func docCreate(w http.ResponseWriter, r *http.Request) {
 } // docCreate
 
 func docChain(w http.ResponseWriter, r *http.Request) {
-	// Make sure this endpoint is only accessible at "/".
+	// Make sure this endpoint is only accessible at "/chain.html".
 	if r.URL.Path != "/chain.html" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
@@ -49,22 +48,31 @@ func docChain(w http.ResponseWriter, r *http.Request) {
 } // docChain
 
 func docDelete(w http.ResponseWriter, r *http.Request) {
-	// Make sure this endpoint is only accessible at "/".
+	// Make sure this endpoint is only accessible at "/delete.html".
 	if r.URL.Path != "/delete.html" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
 	} // if
 	http.ServeFile(w, r, "templates/delete.html")
-} // docChain
+} // docDelete
+
+func docUpdate(w http.ResponseWriter, r *http.Request) {
+	// Make sure this endpoint is only accessible at "/update.html".
+	if r.URL.Path != "/update.html" {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	} // if
+	http.ServeFile(w, r, "templates/update.html")
+} // docUpdate
 
 func docMine(w http.ResponseWriter, r *http.Request) {
-	// Make sure this endpoint is only accessible at "/".
+	// Make sure this endpoint is only accessible at "/mine.html".
 	if r.URL.Path != "/mine.html" {
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return
 	} // if
 	http.ServeFile(w, r, "templates/mine.html")
-} // docMine
+} // docDelete
 
 func docImage(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/".
@@ -82,10 +90,10 @@ func docImage(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// TODO: Run locally
-	// port := "8000"
+	port := "8000"
 
 	// TODO: For production
-	port := os.Getenv("PORT")
+	// port := os.Getenv("PORT")
 
 	// Documentation Endpoints
 	router := mux.NewRouter()
@@ -93,6 +101,7 @@ func main() {
 	router.HandleFunc("/index.html", docIndex)
 	router.HandleFunc("/create.html", docCreate)
 	router.HandleFunc("/chain.html", docChain)
+	router.HandleFunc("/update.html", docUpdate)
 	router.HandleFunc("/delete.html", docDelete)
 	router.HandleFunc("/mine.html", docMine)
 	router.HandleFunc("/image.html", docImage)
@@ -100,6 +109,7 @@ func main() {
 	// API Endpoints
 	router.HandleFunc("/create", new_block)
 	router.HandleFunc("/chain", getChain)
+	router.HandleFunc("/update", update_block)
 	router.HandleFunc("/delete", delete_block)
 
 	// Images
@@ -107,7 +117,7 @@ func main() {
 
 	// Wrapping CORS handler
 	handler := cors.New(cors.Options{
-		AllowedMethods: []string{"GET", "POST", "DELETE", "PATCH", "OPTIONS"},
+		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"},
 	}).Handler(router)
 
 	log.Print("Listening on port: " + port)
