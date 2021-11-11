@@ -85,6 +85,7 @@ func main() {
 	// API Endpoints
 	http.HandleFunc("/create", new_block)
 	http.HandleFunc("/chain", getChain)
+	http.HandleFunc("/delete", delete_block)
 
 	// Images
 	http.HandleFunc("/images", getImage)
