@@ -48,6 +48,15 @@ func docChain(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "templates/chain.html")
 } // docChain
 
+func docDelete(w http.ResponseWriter, r *http.Request) {
+	// Make sure this endpoint is only accessible at "/".
+	if r.URL.Path != "/delete.html" {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	} // if
+	http.ServeFile(w, r, "templates/delete.html")
+} // docChain
+
 func docMine(w http.ResponseWriter, r *http.Request) {
 	// Make sure this endpoint is only accessible at "/".
 	if r.URL.Path != "/mine.html" {
@@ -84,6 +93,7 @@ func main() {
 	router.HandleFunc("/index.html", docIndex)
 	router.HandleFunc("/create.html", docCreate)
 	router.HandleFunc("/chain.html", docChain)
+	router.HandleFunc("/delete.html", docDelete)
 	router.HandleFunc("/mine.html", docMine)
 	router.HandleFunc("/image.html", docImage)
 

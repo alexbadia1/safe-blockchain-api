@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SAFE Blockchain API Documentation</title>
+    <meta name="description" content="Main information about API">
+</head>
+
+<body>
+    <div class="headline">
+        <div>
+            <div class="description">
+                <h1>SAFE Blockchain API Documentation</h1>
+                <p>This is an overview of the SAFE Blockchain API. Below are the listed endpoints detailing request and
+                    response handling.
+                    (Nowwww I understand, why people don't waste time styling API documentation...)</p>
+
+                <a class="closeheader" title="Hide header" href="index.html">&nbsp;home</a>
+            </div>
+
+            <h2>Endpoints</h2>
+            <ul>
+                <li>
+                    <a class="closeheader" title="Hide header" href="create.html">&nbsp;/create</a>
+                </li>
+                <li>
+                    <a class="closeheader" title="Hide header" href="chain.html">&nbsp;/chain</a>
+                </li>
+                <li>
+                    <a class="closeheader" title="Hide header" href="delete.html">&nbsp;/delete</a>
+                </li>
+                <li>
+                    <a class="closeheader" title="Hide header" href="mine.html">&nbsp;/mine</a>
+                </li>
+                <li>
+                    <a class="closeheader" title="Hide header" href="image.html">&nbsp;/image</a>
+                </li>
+            </ul>
+
+            <h2>Create Endpoint</h2>
+            <p>
+                This endpoint is used to delete an education/employment/certification from a user's blockchain.
+            </p>
+
+            <h3>DELETE Request</h3>
+            <p>To delete, this endpoint is expecting a DELETE request with a JSON body.
+            </p>
+
+            <h4>JSON Format</h4>
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"userId": [string],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token": [string],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url": [string],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": [string],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"institution_name": [string],,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"degree_name": [string],,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"date_range": [string],,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"description": [string],,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"index": [int],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"timestamp": [int],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"previousHash": [string],,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"hash": [string],,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"blockType": [string],,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"createOriginHash": [string],<br>
+            }<br>
+
+            <h3>Example</h3>
+
+            <h4>DELETE Request</h4>
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"userId": "2",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token": "ddd77eb1-27a1-493d-85de-bf494fb4267a",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url":
+            "https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": "Education",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"institution_name": "Coursera",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"degree_name": "Google Data Analytics Professional Certificate",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"date_range": "October 2021",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"description": "Learned BigQueary, R, Tableau, Data Narratives/Presentation, Data
+            Life Cycle, etc.",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"index": 1,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"timestamp": 1636611620,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"previousHash":
+            "363c2a27ab85f00390784130c28270957e910bed4947b44df8503b6bc4e338dc",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"hash": "e8600ccffc9760940aaa9525a01497f687bf4a65c2b83d5029ac40b8a7a06d2d",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"blockType": "Create",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"createOriginHash":
+            "e8600ccffc9760940aaa9525a01497f687bf4a65c2b83d5029ac40b8a7a06d2d"<br>
+            }<br>
+
+            <h4>DELETE Response</h4>
+
+            {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"userId": "2",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token": "ddd77eb1-27a1-493d-85de-bf494fb4267a",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url":
+            "https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": "Education",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"institution_name": "Coursera",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"degree_name": "Google Data Analytics Professional Certificate",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"date_range": "October 2021",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"description": "Learned BigQueary, R, Tableau, Data Narratives/Presentation, Data
+            Life Cycle, etc.",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"index": 2,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"timestamp": 1636611657,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"previousHash":
+            "e8600ccffc9760940aaa9525a01497f687bf4a65c2b83d5029ac40b8a7a06d2d",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"hash": "2ec3f4a7af0f9a55a191f16ca59afe6de4880c5e464b325be13ad2f35323e067",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"blockType": "Delete",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"createOriginHash":
+            "e8600ccffc9760940aaa9525a01497f687bf4a65c2b83d5029ac40b8a7a06d2d"<br>
+            }<br>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <br>
+    <span>&copy; SAFE 2021</span>
+</footer>
+
+</html>
