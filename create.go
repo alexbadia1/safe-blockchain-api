@@ -36,12 +36,22 @@ func new_block(w http.ResponseWriter, r *http.Request) {
 
 		// If needed, create a new blockchain
 		if _, exist := UserChains[bloc.UserId]; !exist {
+			// New blochain
 			var newBlockchain Blockchain = Blockchain{}
+
+			// New genesis block
+			var genesisBlock Block = Block{}
+			genesisBlock.blockType = Genesis
+			calcBlockMetadata(&genesisBlock, UserChains[bloc.UserId].Chain)
+			newBlockchain.Chain = append(newBlockchain.Chain, genesisBlock)
+
+			// Update the reference in the map
 			UserChains[bloc.UserId] = newBlockchain
 		} // if
 
 		// Append a new block to user's blockchain
 		if storedUserChain, exist := UserChains[bloc.UserId]; exist {
+			bloc.blockType = Create
 			calcBlockMetadata(&bloc, storedUserChain.Chain)
 			storedUserChain.Chain = append(storedUserChain.Chain, bloc)
 			UserChains[bloc.UserId] = storedUserChain
@@ -76,6 +86,9 @@ func calcBlockMetadata(bp *Block, chain []Block) int {
 	if size == 0 {
 		bp.PreviousHash = bp.Hash
 	} // if
+
+	// Set block type and originHash
+	bp.createOriginHash = bp.Hash
 
 	return size
 } // calcBlockMetadata

@@ -37,53 +37,146 @@
                 </li>
             </ul>
 
-            <h2>Chain Endpoint</h2>
+            <h2>/chain Endpoint</h2>
             <p>This endpoint is used to retrieve a user's entire blockchain.</p>
 
             <h3>GET Request</h3>
-            <p>To retrieve a user's blockchain, this endpoint is expecting a GET request with a userId query parameter.
-            </p>
+            <p>To retrieve a user's blockchain, this endpoint is expecting a GET request with the following query
+                parameters:</p>
+            <ul>
+                <li>
+                    {userId} = [int] -> users blockchain id number.
+                </li>
+                <li>
+                    {view} = raw | filtered [default] -> whether to show genesis, update, and delete blocks.
+                </li>
+            </ul>
 
-            <h3>Format</h3>
-            <p> https://safe-demo-api.herokuapp.com/chain?userId=[int]</p>
+            <h4>Format</h4>
+            <ul>
+                <li>
+                    <p> https://safe-demo-api.herokuapp.com/chain?userId={int}&view={raw | filtered [default]}</p>
+                </li>
+            </ul>
 
-            <h4>Example</h4>
+            <h4>Examples</h4>
+            <ul>
+                <li>
+                    <p>Filtered Blockchain for userId 1: https://safe-demo-api.herokuapp.com/chain?userId=1 </p>
+                </li>
+                <li>
+                    <p>Filtered Blockchain for userId 2:
+                        https://safe-demo-api.herokuapp.com/chain?userId=2&view=filtered </p>
+                </li>
+                <li>
+                    <p>Raw Blockchain for userId 3: https://safe-demo-api.herokuapp.com/chain?userId=3&view=raw </p>
+                </li>
+            </ul>
 
-            <p>https://safe-demo-api.herokuapp.com/chain?userId=1 </p>
+            <h3>GET Response</h3>
 
-            <h4>GET Response</h4>
-            [<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userId":"1",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_token":"ddd77eb1-27a1-493d-85de-bf494fb4267a",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_url":"https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_category":"Education",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"institution_name":"Coursera",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"degree_name":"Google Data Analytics Professional
-            Certificate",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date_range":"October 2021",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description":"Learned BigQueary, R, Tableau, Data
-            Narratives/Presentation, Data Life Cycle, etc.",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"index":0,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"timestamp":1636390814,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"previousHash":"fb0e9f6297e055c4c0812ea0da09c9d48cbf6144a6dc8b66bf930c44b615bea8",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hash":"fb0e9f6297e055c4c0812ea0da09c9d48cbf6144a6dc8b66bf930c44b615bea8"<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userId":"1",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_token":"",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_url":"",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_category":"Education",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"institution_name":"Marist",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"degree_name":"Cybersecurity",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date_range":"December 2021",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description":"Learned absolutely nothing",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"index":1,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"timestamp":1636390814,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"previousHash":"fb0e9f6297e055c4c0812ea0da09c9d48cbf6144a6dc8b66bf930c44b615bea8",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hash":"a57ef153daad6205e14d766cbafdfb2a4e16117aef8c1f5409649a6b9fd77839"<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-            ] <br>
+            <h4>Formats</h4>
+            <ul>
+                <li>
+                    { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"userId": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"institution_name": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"degree_name": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"date_range": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"description": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"index": [int], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"timestamp": [int], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"previousHash": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"hash": [string], <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"blockType": ["Genesis" | "Create" | "Update" | "Delete"] <br>
+                    } <br>
+                </li>
+            </ul>
+
+            <h4>Example GET (view=raw)</h4>
+            <ul>
+                <li>
+                    [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{ <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userId": "", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_token": "", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_url": "", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": "", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"institution_name": "", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"degree_name": "", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date_range": "", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description": "", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"index": 0, <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"timestamp": 1636608549, <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"previousHash":
+                    "21dc6f26b868c43ba08dd8e38cc3b04908b19e5c12253d12a39d5f046e1b9f8c", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hash":
+                    "21dc6f26b868c43ba08dd8e38cc3b04908b19e5c12253d12a39d5f046e1b9f8c",
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"BlockType": "Genesis" <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}, <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{ <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userId": "2", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_token":
+                    "ddd77eb1-27a1-493d-85de-bf494fb4267a", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_url":
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": "Education", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"institution_name": "Coursera", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"degree_name": "Google Data Analytics Professional
+                    Certificate", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"date_range": "October 2021", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description": "Learned BigQueary, R, Tableau, Data
+                    Narratives/Presentation,
+                    Data Life Cycle, etc.", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"index": 1, <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"timestamp": 1636608549, <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"previousHash":
+                    "21dc6f26b868c43ba08dd8e38cc3b04908b19e5c12253d12a39d5f046e1b9f8c", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hash":
+                    "c2ec09cb26db3977cb67da994b0d4823a40b186f22757c539574837c106e1ea1",
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"BlockType": "Create" <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                    ]<br>
+                </li>
+            </ul>
+
+            <h4>Example GET (view=filtered)</h4>
+            <ul>
+                <li>
+
+                    { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"userId": "2", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token":
+                    "ddd77eb1-27a1-493d-85de-bf494fb4267a", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url":
+                    &nbsp;&nbsp;&nbsp;&nbsp;"https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": "Education", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"institution_name": "Coursera", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"degree_name": "Google Data Analytics Professional
+                    Certificate", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"date_range": "October 2021", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"description": "Learned BigQueary, R, Tableau, Data
+                    Narratives/Presentation,
+                    Data Life Cycle, etc.", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"index": 1, <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"timestamp": 1636608549, <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"previousHash":
+                    "21dc6f26b868c43ba08dd8e38cc3b04908b19e5c12253d12a39d5f046e1b9f8c", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"hash":
+                    "c2ec09cb26db3977cb67da994b0d4823a40b186f22757c539574837c106e1ea1",
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"BlockType": "Create" <br>
+                    } <br>
+
+                </li>
+            </ul>
         </div>
     </div>
 </body>
