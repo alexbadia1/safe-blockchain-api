@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 )
 
 //================================================================================
@@ -69,10 +70,10 @@ func docImage(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// TODO: Run locally
-	port := "8000"
+	// port := "8000"
 
 	// TODO: For production
-	// port := os.Getenv("PORT")
+	port := os.Getenv("PORT")
 
 	// Documentation Endpoints
 	http.HandleFunc("/", docIndex)
