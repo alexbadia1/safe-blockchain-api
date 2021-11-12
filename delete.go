@@ -49,10 +49,11 @@ func delete_block(w http.ResponseWriter, r *http.Request) {
 
 		// Append a new DELETE block to user's blockchain
 		if storedUserChain, exist := UserChains[blockToDelete.UserId]; exist {
+			calcBlockMetadata(&blockToDelete, storedUserChain.Chain)
+
 			// Store origin hash of the deleted block
 			blockToDelete.BlockType = Delete
 			blockToDelete.CreateOriginHash = createOriginHash
-			calcBlockMetadata(&blockToDelete, storedUserChain.Chain)
 
 			storedUserChain.Chain = append(storedUserChain.Chain, blockToDelete)
 			UserChains[blockToDelete.UserId] = storedUserChain

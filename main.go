@@ -112,6 +112,7 @@ func main() {
 	router.HandleFunc("/chain", getChain)
 	router.HandleFunc("/update", update_block)
 	router.HandleFunc("/delete", delete_block)
+	router.HandleFunc("/mine", mine)
 
 	// Images
 	router.HandleFunc("/images", getImage)

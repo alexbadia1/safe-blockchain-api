@@ -59,11 +59,11 @@ func update_block(w http.ResponseWriter, r *http.Request) {
 
 		// Append a new block to user's blockchain
 		if storedUserChain, exist := UserChains[blockToUpdate.UserId]; exist {
+			calcBlockMetadata(&blockToUpdate, storedUserChain.Chain)
+
 			// Set block type and originHash
 			blockToUpdate.BlockType = Update
 			blockToUpdate.CreateOriginHash = createOriginHash
-
-			calcBlockMetadata(&blockToUpdate, storedUserChain.Chain)
 
 			// Add to map of blockchains
 			storedUserChain.Chain = append(storedUserChain.Chain, blockToUpdate)

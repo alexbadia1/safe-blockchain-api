@@ -37,6 +37,7 @@ type Block struct {
 	Hash                string `json:"hash"`
 	BlockType           string `json:"blockType"`
 	CreateOriginHash    string `json:"createOriginHash"`
+	Nonce               int64  `json:"nonce"`
 } // Block
 
 type Blockchain struct {

@@ -1,9 +1,7 @@
 package main
 
 import (
-	"crypto/sha256"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -72,7 +70,7 @@ func new_block(w http.ResponseWriter, r *http.Request) {
 //  - timestamp
 //  - previous hash
 //  - current hash
-func calcBlockMetadata(bp *Block, chain []Block) int {
+func calcBlockMetadata(bp *Block, chain []Block) {
 	var size int = len(chain)
 	bp.Index = int64(size)
 	bp.Timestamp = time.Now().Unix()
@@ -81,14 +79,10 @@ func calcBlockMetadata(bp *Block, chain []Block) int {
 	} // if
 
 	// Calculate hash
-	h := sha256.New()
-	h.Write([]byte(fmt.Sprintf("%v", bp)))
-	bp.Hash = fmt.Sprintf("%x", h.Sum(nil))
+	mineBlock(bp)
 
 	// Previous hash of first block is it's own hash
 	if size == 0 {
 		bp.PreviousHash = bp.Hash
 	} // if
-
-	return size
 } // calcBlockMetadata
