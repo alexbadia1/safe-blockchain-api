@@ -68,7 +68,7 @@ func mineBlock(bp *Block) {
 		h.Write([]byte(guessMsg))
 		var tmp string = fmt.Sprintf("%x", h.Sum(nil))
 
-		if tmp[0:4] == "0000" {
+		if tmp[0:5] == "00000" {
 			finalHash = tmp
 			break
 		} // if
