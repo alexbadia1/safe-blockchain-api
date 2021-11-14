@@ -44,7 +44,73 @@
             </ul>
 
             <h2>/mine Endpoint</h2>
-            <p>Not yet implemented</p>
+            <p>
+                This endpoint is used to mine a block on the user's blockchain.
+            </p>
+
+            <h3>POST Request</h3>
+            <p>To mine, this endpoint is expecting a POST request with a JSON body.
+            </p>
+
+            <h4>JSON Format</h4>
+            {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"userId": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"institution_name": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"degree_name": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"date_range": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"description": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"index": [int],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"timestamp": [int],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"previousHash": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"hash": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"blockType": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"createOriginHash": [string],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"nonce": [int] <br>
+            }<br>
+
+            <h3>Example</h3>
+
+            <h4>POST Request</h4>
+            {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"userId": "3",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token": "ddd77eb1-27a1-493d-85de-bf494fb4267a",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url": "https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": "Education",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"institution_name": "Youtube",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"degree_name": "Google Data Analytics Professional Certificate",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"date_range": "October 2021",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"description": "Learned BigQueary, R, Tableau, Data Narratives/Presentation, Data Life Cycle, etc.",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"index": 1,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"timestamp": 1636890505,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"previousHash": "0002804ef2132aa4ae7df86395585ee2d833957ca5f42f2a349b291022ec7ebb",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"hash": "000752f965dc9f4070fb785f058061ae98c6488274c675687da8d0fd7650814d",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"blockType": "Create",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"createOriginHash": "000752f965dc9f4070fb785f058061ae98c6488274c675687da8d0fd7650814d",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>"nonce": 79</strong> <br>
+            }<br>
+
+            <h4>POST Response</h4>
+
+            {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"userId": "3",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_token": "ddd77eb1-27a1-493d-85de-bf494fb4267a",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_url": "https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"certificate_category": "Education",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"institution_name": "Youtube",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"degree_name": "Google Data Analytics Professional Certificate",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"date_range": "October 2021",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"description": "Learned BigQueary, R, Tableau, Data Narratives/Presentation, Data Life Cycle, etc.",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"index": 1,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"timestamp": 1636890505,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"previousHash": "0002804ef2132aa4ae7df86395585ee2d833957ca5f42f2a349b291022ec7ebb",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"hash": "00096113cd2b378e2d9504e2640daca3b922870bc648397cc6d68b3998bb15c9",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"blockType": "Create",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"createOriginHash": "000752f965dc9f4070fb785f058061ae98c6488274c675687da8d0fd7650814d",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<strong>"nonce": 2149</strong> <br>
+            }<br>
         </div>
     </div>
 </body>
