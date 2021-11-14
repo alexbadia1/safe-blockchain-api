@@ -4,8 +4,9 @@ import (
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
+	"strconv"
+	"strings"
 )
 
 //================================================================================
@@ -44,10 +45,27 @@ func mineBlock(bp *Block) {
 	bp.Nonce = 0
 	var finalHash string = ""
 
+	// Get data to hash
+	var concatenatestrings strings.Builder
+	concatenatestrings.WriteString(strings.TrimSpace(bp.CertificateCatgeory))
+	concatenatestrings.WriteString(strings.TrimSpace(bp.CertificateToken))
+	concatenatestrings.WriteString(strings.TrimSpace(bp.CertificateUrl))
+	concatenatestrings.WriteString(strings.TrimSpace(bp.DateRange))
+	concatenatestrings.WriteString(strings.TrimSpace(bp.DegreeName))
+	concatenatestrings.WriteString(strings.TrimSpace(bp.Description))
+	concatenatestrings.WriteString(strings.TrimSpace(strconv.FormatInt(bp.Index, 10)))
+	concatenatestrings.WriteString(strings.TrimSpace(bp.InstitionName))
+	concatenatestrings.WriteString(strings.TrimSpace(bp.PreviousHash))
+	concatenatestrings.WriteString(strings.TrimSpace(strconv.FormatInt(bp.Timestamp, 10)))
+	concatenatestrings.WriteString(strings.TrimSpace(bp.UserId))
+	var msg string = concatenatestrings.String()
+
 	for {
+		guessMsg := msg + strconv.FormatInt(bp.Nonce, 10)
+
 		// Calculate hash
 		h := sha256.New()
-		h.Write([]byte(fmt.Sprintf("%v", bp)))
+		h.Write([]byte(guessMsg))
 		var tmp string = fmt.Sprintf("%x", h.Sum(nil))
 
 		if tmp[0:3] == "000" {
@@ -56,8 +74,6 @@ func mineBlock(bp *Block) {
 		} // if
 
 		bp.Nonce = bp.Nonce + 1
-
-		log.Printf("%v", tmp)
 	} // for
 
 	bp.Hash = finalHash
