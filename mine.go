@@ -13,7 +13,7 @@ import (
 //================================================================================
 
 func mine(w http.ResponseWriter, r *http.Request) {
-	if r.Method == "GET" {
+	if r.Method == "POST" {
 		// Parse JSON to Block Struct
 		var bloc Block = Block{}
 		var success bool = parseJsonToBlock(&bloc, r)
