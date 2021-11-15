@@ -18,7 +18,7 @@
                     response handling.
                     (Nowwww I understand, why people don't waste time styling API documentation...)</p>
 
-                    <a class="closeheader" title="Hide header" href="index.html">&nbsp;home</a>
+                <a class="closeheader" title="Hide header" href="index.html">&nbsp;home</a>
             </div>
 
             <h2>Endpoints</h2>
@@ -42,6 +42,61 @@
                     <a class="closeheader" title="Hide header" href="image.html">&nbsp;/image</a>
                 </li>
             </ul>
+
+            <h2>Hash Algorithm</h2>
+            <p>The blocks are hash using the SHA-256 Hash.</p>
+            <h3>Hash Input:</h3>
+            <p>The hash input contains the following fields all appended against each other. Each field is trimmed
+                (leading and trailing white-space removed), but internal white space is kept.</p>
+            <ul>
+                <li> Certificate Catgeory </li>
+                <li> Certificate Token </li>
+                <li> Certificate Url </li>
+                <li> Date Range </li>
+                <li> Degree Name </li>
+                <li> Description </li>
+                <li> Block Index </li>
+                <li> Instituition Name </li>
+                <li> Previous Hash </li>
+                <li> Timestamp </li>
+                <li> User Id </li>
+            </ul>
+
+            <h3>Example</h3>
+            <ul>
+                <li> Certificate Catgeory = Education</li>
+                <li> Certificate Token = ddd77eb1-27a1-493d-85de-bf494fb4267a</li>
+                <li> Certificate Url =
+                    https://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profile</li>
+                <li> Date Range = October 2021 </li>
+                <li> Degree Name = Google Data Analytics Professional Certificate </li>
+                <li> Description = Learned BigQueary, R, Tableau, Data Narratives/Presentation, Data Life Cycle, etc.
+                </li>
+                <li> Block Index = 1 </li>
+                <li> Instituition Name = Coursera</li>
+                <li> Previous Hash = 000001710634fb1c336cc7e35712c07975f3093afd88544f26ce9b4814186485 </li>
+                <li> Timestamp = 1636993161</li>
+                <li> User Id = 3 </li>
+            </ul>
+
+            <h3>Example Hash Input</h3>
+            <p>
+                <strong>Hash Input</strong>:
+                Educationddd77eb1-27a1-493d-85de-bf494fb4267ahttps://www.credly.com/badges/ddd77eb1-27a1-493d-85de-bf494fb4267a?source=linked_in_profileOctober
+                2021Google Data Analytics Professional CertificateLearned BigQueary, R, Tableau, Data
+                Narratives/Presentation, Data Life Cycle,
+                etc.1Coursera000001710634fb1c336cc7e35712c07975f3093afd88544f26ce9b481418648516369931613
+            </p>
+
+            <h3>Example Output Hash and Nonce</h3>
+            <p><strong>Hash</strong>: 00000b98c4858f87553866e8490923f25a0606458841bebad327aaceafd629ce</p>
+            <p><strong>Nonce</strong>: 827814</p>
+
+            <h2>Mining Algorithm</h2>
+            <p>The mining alogrithm used is simple. In order for a block to be mined, each block's hash must start with
+                five 0's.</p>
+            <p>By incrementing the block's nonce by 1, eventually a nonce is found where the block's hash starts with
+                five 0's. </p>
         </div>
     </div>
 </body>
